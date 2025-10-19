@@ -1,24 +1,3 @@
-// const joi = require("joi");
-
-
-// module.exports.listingSchema = joi.object({
-//     listing: joi.object({
-//         title: joi.string().required(),
-//         description: joi.string().required(),
-//         price: joi.number().required(),
-//         location: joi.string().required(),
-//         country: joi.string().required(),
-//         image: joi.object({
-//             url: joi.string().allow("", null) // must be object with url
-//         })
-//     }).required()
-// });
-
-// // module.exports.reviewSchema = joi.object({
-// //     rating : joi.number().min(1).max(5),
-// //     comment : joi.string(),
-// // }).required();
-
 
 const joi = require("joi");
 
