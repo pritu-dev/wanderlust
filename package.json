@@ -3,6 +3,9 @@
     "node" : "22.14.0"
   },
 
+"scripts": {
+  "start": "node app.js"
+}
 
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.16.2",
