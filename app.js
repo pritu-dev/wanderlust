@@ -91,6 +91,11 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error.ejs", { message });
 });
 
+// app.js
+app.get("/", (req, res) => {
+  res.render("home"); // views/home.ejs render होगा
+});
+
 app.listen(8080,()=>{
     console.log("app is listening");
 });
