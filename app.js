@@ -81,6 +81,11 @@ app.use((req,res,next)=>{
   next();
 })
 
+app.use((req, res, next) => {
+    res.locals.currUser = req.user; // req.user comes from passport/session
+    next();
+});
+
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
