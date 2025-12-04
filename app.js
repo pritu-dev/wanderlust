@@ -82,7 +82,7 @@ app.use((req,res,next)=>{
 })
 
 app.use((req, res, next) => {
-    res.locals.currUser = req.user; // req.user comes from passport/session
+    res.locals.currUser = req.user; 
     next();
 });
 
@@ -98,9 +98,12 @@ app.use((err, req, res, next) => {
 
 // app.js
 app.get("/", (req, res) => {
-  res.render("home"); // views/home.ejs render होगा
+  res.render("home"); 
 });
 
+app.get("./my",(req,res) => {
+   res.send("Hello");
+})
 app.listen(8080,()=>{
     console.log("app is listening");
 });
