@@ -101,7 +101,7 @@ app.get("/", (req, res) => {
   res.render("home"); 
 });
 
-app.get("./my",(req,res) => {
+app.get("/my",(req,res) => {
    res.send("Hello");
 })
 app.listen(8080,()=>{
