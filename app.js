@@ -97,9 +97,9 @@ app.use((err, req, res, next) => {
 });
 
 // app.js
-app.get("/", (req, res) => {
-  res.render("home"); 
-});
+// app.get("/", (req, res) => {
+//   res.render("home"); 
+// });
 
 app.get("/my",(req,res) => {
    res.send("Hello");
