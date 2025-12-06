@@ -1,22 +1,10 @@
 <% layout("/layouts/boilerplate") %>
-<<<<<<< HEAD
 
 <style>
    #filters {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-=======
-     <!-- <form method="GET" action="/listings/new">
-        <button>Create new Listing </button>
-     </form> -->
-<style>
-   #filters {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
- 
->>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
    }
    .filter{
       text-align: center;
@@ -24,12 +12,6 @@
       margin-top: 2rem;
       opacity: 0.7;
    }
-<<<<<<< HEAD
-=======
-   .filter p {
-      font-size: 0.8rem;
-   }
->>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
    .filter:hover{
       opacity: 1;
       cursor: pointer;
@@ -37,11 +19,7 @@
    .filter p{
       font-size: 0.8rem;
    }
-<<<<<<< HEAD
    .tax-info{
-=======
-  .tax-info{
->>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
       display:none;
    }
    .tax-toggle{
@@ -53,15 +31,10 @@
       display: flex;
       align-items: center;
    }
-<<<<<<< HEAD
-=======
-
->>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
 </style>
 
 <div id="filters">
    <div class="filter">
-<<<<<<< HEAD
          <div><i class="fa-solid fa-fire"></i></div>
          <p>Trending</p>
       </a>
@@ -153,102 +126,12 @@
   <% } %>
 </div>
 
-=======
-        <div> <i class="fa-solid fa-fire"></i></div>
-           <p>Trending</p>
-   </div>
-   <div class="filter">
-        <div><i class="fa-solid fa-bed"></i></div>
-           <p>Rooms</p>
-   </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-mountain-city"></i></div>
-           <p>Iconic Cities</p>
-   </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-mountain"></i></div>
-           <p>Mountains</p>
-   </div>
-   <div class="filter">
-        <div><i class="fa-brands fa-fort-awesome"></i></div>
-        <p>Castles</p>
-   </div>
-   <div class="filter">
-        <div><i class="fa-solid fa-person-swimming"></i></div>
-        <p>Farms</p>
-   </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-campground"></i></div>
-        <p>Camping</p>
-   </div>
-   <div class="filter">
-        <div><i class="fa-solid fa-snowflake"></i></div>
-        <p>Arctic</p>
-   </div>
-         <div class="filter">
-        <div><i class="fa-solid fa-landmark-dome"></i></div>
-        <p>Dome</p>
-   </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-sailboat"></i></div>
-        <p>Boats</p>
-   </div>
-
-      <div class="tax-toggle">
-         <div class="form-check form-switch toggle-btn">
-         <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-         <label class="form-check-label" for="switchCheckDefault">Display total taxes before</label>
-   </div>
-</div>
-      </div>
-
-
-
- <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 mt-3">
-  <% for(let listing of allListings){ %>
-  <a href="/listings/<%= listing._id %>" class="listing-link">
-   <div class="card col listing-card">
-      <img
-         src="<%= listing.image.url %>" 
-         class="card-img-top" 
-         style="height:15rem" 
-         alt="listing-image"
-      >
-      <!-- Overlay ha card vr lihu shakto kahipan -->
-      <div class="card-img-overlay"></div>
-
-      <div class="card-body">
-         <p class="card-text">
-         <b><%= listing.title %></b><br>
-            &#8377;<%= listing.price.toLocaleString("en-IN") %> /night
-            <i class="tax-info"> &nbsp;+18% GST</i>
-         </p>
-</div>
-</div>
-</a>
-<% } %>
-</div> 
-</body>
->>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
 <script>
    let taxSwitch = document.getElementById("switchCheckDefault");
    taxSwitch.addEventListener("click",()=>{
       let taxInfo = document.getElementsByClassName("tax-info");
-<<<<<<< HEAD
       for(info of taxInfo) {
          info.style.display = info.style.display !== "inline" ? "inline" : "none";
       }
    });
 </script>
-=======
-        for(info of taxInfo) {
-          if(info.style.display != "inline"){
-              info.style.display = "inline";
-           }
-           else{
-            info.style.display = "none";
-           }
-        }
-   });
-</script>
->>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee

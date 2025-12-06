@@ -1,8 +1,4 @@
-<<<<<<< HEAD
  <% layout("/layouts/boilerplate") %>
-=======
-<% layout("/layouts/boilerplate") %>
->>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
 <script>
   const mapToken = "<%= process.env.MAP_TOKEN %>";
 
@@ -45,7 +41,6 @@
  <form method="POST" action="/listings/<%= listing._id %>/reviews" novalidate class="needs-validation" >
      <div class="mb-3 mt-3">
         <label for="rating"  class="form-label">Rating</label>
-<<<<<<< HEAD
     <fieldset class="starability-heart">
                     <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
                     <input type="radio" id="first-rate1" name="review[rating]" value="1" />
@@ -59,11 +54,6 @@
                     <input type="radio" id="first-rate5" name="review[rating]" value="5" />
                     <label for="first-rate5" title="Amazing">5 stars</label>
                 </fieldset>
-=======
-        <input type="range" class="form-range" 
-        name="review[rating]" id="rating"
-        min="1" max="5" >
->>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
      </div>
 
     <div class="mb-3 mt-3">
@@ -78,7 +68,6 @@
  </form>
 <% } %>
 
-<<<<<<< HEAD
 <% if(listing.reviews.length > 0) { %>
 <div class="row">
   <p><b>All Reviews</b></p>
@@ -99,27 +88,6 @@
 </div>
 <% } %>
 
-=======
-<% if(listing.reviews.length > 0) {%>
-<div class="row">
-    <p><b>All Reviews</b></p>
-    <% for(let review of listing.reviews){ %>
-   <div class="card col-5 ms-3 mb-3">
-   <div class="card-body">
-     <h5 class="card-title">@<%= review.author.username %></h5>
-     <p class="card-text"><%= review.comment %></p>
-     <p class="card-text"><%= review.rating %>star</p>
-     <p class="starability-result card-text" data-rating="3"></p>
-
-      <form method="POST" class="mb-3" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-    <button class="btn btn-sm btn-dark">Delete</button>
-  </form>
-  </div>
- </div>
-  <%  } %>
-</div>
-  <%  } %>
->>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
 </div>
     <div class="col-8 offset-3 mb-3">
         <h3>Where you'll be</h3>
@@ -127,9 +95,5 @@
     </div>
 </div>
 
-<<<<<<< HEAD
 <script src="/js/map.js"></script> 
 
-=======
-<script src="/js/map.js"></script>
->>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee

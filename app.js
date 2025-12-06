@@ -82,11 +82,7 @@ app.use((req,res,next)=>{
 })
 
 app.use((req, res, next) => {
-<<<<<<< HEAD
     res.locals.currUser = req.user; // req.user comes from passport/session
-=======
-    res.locals.currUser = req.user; 
->>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
     next();
 });
 
@@ -100,7 +96,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error.ejs", { message });
 });
 
-<<<<<<< HEAD
 
 // app.js
 app.get("/", (req, res) => {
@@ -113,14 +108,3 @@ app.listen(8080, () => {
 
 
 
-=======
-// app.js
-app.get("/", (req, res) => {
-  res.render("home"); 
-});
-
-app.listen(8080,()=>{
-    console.log("app is listening");
-});
-
->>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
