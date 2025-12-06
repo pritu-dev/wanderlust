@@ -21,6 +21,26 @@ router.route("/login")
          userController.login
       );
 
+<<<<<<< HEAD
+=======
+
+// router.get("/signup",userController.renderSignUpForm);
+
+// // Create Route (SignUp)
+// router.post("/signup", wrapAsync(userController.signup));
+
+// //Login
+// router.get("/login",userController.renderLogin);
+
+// router.post("/login", saveRedirectUrl,
+//           passport.authenticate("local",{ 
+//             failureRedirect:"/login",
+//             failureFlash : true,
+//          }),
+//          userController.login
+//       );
+
+>>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
 //logout
 router.get("/logout",userController.loggout);
 

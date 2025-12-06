@@ -38,7 +38,11 @@ module.exports.createListing = async (req, res,next) => {
 
     let url = req.file.path;
     let filename = req.file.filename;
+<<<<<<< HEAD
     req.body.listing.price = Number(req.body.listing.price); 
+=======
+    req.body.listing.price = Number(req.body.listing.price); // convert price to number
+>>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
     const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
     newListing.image = {url, filename};
@@ -50,9 +54,19 @@ module.exports.createListing = async (req, res,next) => {
 
     
     req.flash("success", "New listing created");
+<<<<<<< HEAD
     res.redirect("/listings"); 
 }
 
+=======
+    res.redirect("/listings"); // ✅ Only one response
+}
+
+
+
+
+
+>>>>>>> e0e2065334ce48879c2a94317cd516b1aee8eeee
 module.exports.renderEditForm = async (req, res) => {
     const { id } = req.params;
     const listing = await Listing.findById(id);
