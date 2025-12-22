@@ -8,8 +8,7 @@ const { storage} = require("../cloudConfig.js");
 const upload = multer({ storage});
 const Listing = require("../models/listing.js") 
 
-router
-  .route("/search")
+router.route("/search")
   .get(
     wrapAsync(async (req, res) => {
       const { location } = req.query;
