@@ -9,7 +9,11 @@ const upload = multer({ storage});
 const Listing = require("../models/listing.js") 
 
 router.route("/search")
+<<<<<<< HEAD
 .get(
+=======
+  .get(
+>>>>>>> 99833b2cf6c12d9c8c2df6250747ff2f84d68eee
     wrapAsync(async (req, res) => {
       const { location } = req.query;
       let allListings;
