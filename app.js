@@ -96,15 +96,60 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error.ejs", { message });
 });
 
-
+app.get("/listings/reserve",(req,res) => {
+    res.send("hello")
+})
 // app.js
 app.get("/", (req, res) => {
   res.render("home"); // views/home.ejs render होगा
 });
 
+
+
 app.listen(8080, () => {
     console.log("Server is Started on port 8080");
 });
 
+priti
+
+// 🌍 Just Launched My Travel Website – Wanderlust! 🚀
 
 
+
+// Check it out live: https://wanderlust-2-hpz3.onrender.com/listings
+
+// See the code:      https://github.com/pritu-dev/wanderlust
+
+
+
+// Wanderlust is a full-stack travel web application built using React, Node.js, Express, and MongoDB. 
+
+// It allows users to browse destinations, filter by category, search for places, and book trips seamlessly.
+
+
+
+// ✨ Key Features:
+
+// - User Authentication (Sign up / Login)
+
+// - Browse & Filter Destinations
+
+// - Responsive Design (Desktop + Mobile)
+
+// - Image Uploads using Cloudinary
+
+// - Real-time Search Functionality
+
+
+
+// 💻 Tech Stack: React | Node.js | Express | MongoDB | Bootstrap | Cloudinary |HTML |CSS |Javascript
+
+
+
+// This project helped me enhance my skills in full-stack development, API integration, and responsive web design.  
+
+// I’d love your feedback! 🙌
+
+
+
+// #NodeJS #FullStack #WebDevelopment #PortfolioProject
