@@ -8,9 +8,8 @@ const { storage} = require("../cloudConfig.js");
 const upload = multer({ storage});
 const Listing = require("../models/listing.js") 
 
-router
-  .route("/search")
-  .get(
+router.route("/search")
+.get(
     wrapAsync(async (req, res) => {
       const { location } = req.query;
       let allListings;
@@ -36,6 +35,8 @@ router.route("/")
 
 // NEW Listing
 router.get("/new", isLoggedIn, listingController.renderNewForm);
+router.get("/reserve",listingController.reserveFormRender);
+router.get("/confermation",listingController.confermation);
 
 router.route("/:id")
 .get( wrapAsync(listingController.showListing))

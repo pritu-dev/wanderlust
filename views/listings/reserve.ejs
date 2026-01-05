@@ -1,0 +1,77 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container p-5 ">
+  <div class="col-md-6 mx-auto">
+   <form id="reserveForm" class="row g-3 border p-4 shadow rounded bg-light">
+      <h3 class="text-center mb-3">Reserve Villa</h3>
+
+      <!-- Name -->
+      <div class="col-12">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="fullName" placeholder="John Doe" required>
+      </div>
+
+      <!-- Email -->
+      <div class="col-12">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="example@mail.com" required>
+      </div>
+
+      Phone
+      <div class="col-12">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" placeholder="+91 9876543210" required>
+      </div>
+
+      <!-- Check-in & Check-out -->
+      <div class="col-md-6">
+        <label for="checkIn" class="form-label">Check-in Date</label>
+        <input type="date" class="form-control" id="checkIn" required>
+      </div>
+      <div class="col-md-6">
+        <label for="checkOut" class="form-label">Check-out Date</label>
+        <input type="date" class="form-control" id="checkOut" required>
+      </div>
+
+      <!-- Guests -->
+      <div class="col-md-6">
+        <label for="guests" class="form-label">Number of Guests</label>
+        <input type="number" class="form-control" id="guests" min="1" max="20" value="1" required>
+      </div>
+      <div class="col-6">
+        <label for="payment" class="form-label">Payment Method</label>
+        <select id="payment" class="form-select" required>
+          <option selected>Choose...</option>
+          <option>Credit Card</option>
+          <option>Debit Card</option>
+          <option>UPI</option>
+          <option>Pay on Arrival</option>
+        </select>
+      </div>
+
+      <!-- Special Requests -->
+      <div class="col-12">
+        <label for="requests" class="form-label">Special Requests</label>
+        <textarea class="form-control" id="requests" rows="3" placeholder="Any special requests"></textarea>
+      </div>
+
+      <!-- Payment Method -->
+
+      <!-- Terms Checkbox -->
+      <div class="col-12 form-check">
+        <input class="form-check-input" type="checkbox" id="terms" required>
+        <label class="form-check-label" for="terms">
+          I agree to the Terms and Conditions
+        </label>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="col-12 text-center">
+        <!-- <button type="submit" class="btn btn-success mt-3 w-50">Reserve Villa</button> -->
+         <a href="/listings/confermation" class="btn btn-success mt-3 w-50">Reserve Villa</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+

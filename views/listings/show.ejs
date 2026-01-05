@@ -1,100 +1,245 @@
 <% layout("/layouts/boilerplate") %>
 
-<script>
-  const mapToken = "<%= process.env.MAP_TOKEN %>";
+  <script>
+    const mapToken = "<%= process.env.MAP_TOKEN %>";
 
-  const listing = <%- JSON.stringify(listing) %>;
+    const listing = <% - JSON.stringify(listing) %>;
+  </script>
 
+  <div class="row mt-3">
+    <div class="col-8 offset-3">
+      <h3>
+        <%= listing.title %>
+      </h3>
+    </div>
+    <div class="card col-lg-7 col-sm-3 offset-3 show-card listing-card">
+      <img src="<%= listing.image.url%>" class="card-img-top show-img" alt="listing_image">
+      <div class="card-body"><br>
+        <p class="card-text"> <strong>Owned by :</strong>
+          <%= listing.owner.username %>
+        </p>
+        <p class="card-text"><strong>Description : </strong>
+          <%= listing.description %>
+        </p>
+        <p class="card-text"><strong>Cost : </strong>&#8377;<%= listing.price.toLocaleString("en-IN") %>
+        </p>
+        <p class="card-text"><strong>Location : </strong>
+          <%= listing.location %>
+        </p>
+        <p class="card-text"><strong>Country : </strong>
+          <%= listing.country %>
+        </p>
 
- </script>
-
-<div class="row mt-3">
-<div class="col-8 offset-3">
-<h3><%= listing.title %> </h3>
+  <div class="text-center">
+        <a href="/listings/reserve" class="btn btn-success">Reserve Place </a>
+  </div>
+ </div>
 </div>
- <div class="card col-6 offset-3 show-card listing-card">
-    <img src="<%= listing.image.url%>" class="card-img-top show-img" alt="listing_image">
-    <div class="card-body">
+  <% if(currUser && listing.owner._id.equals(currUser._id)){ %>
+    <div class="btns">
+      <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark add-btn col-1 offset-3 ">Edit</a>
 
-          <p class="card-text"><i> Owned by <%= listing.owner.username %></i></p>
-          <p class="card-text"><%= listing.description %></p>
-          <p class="card-text">&#8377;<%= listing.price.toLocaleString("en-IN") %></p>
-          <p class="card-text"><%= listing.location %></p>
-          <p class="card-text"><%= listing.country %></p> 
+      <form method="POST" action="/listings/<%= listing._id%>?_method=DELETE">
+        <button class="btn btn-dark offset-5">Delete </button>
+      </form>
+    </div>
+    <% } %>
+
+      <div class="col-8 offset-3 mb-3">
+        <% if(currUser) { %>
+          <hr>
+          <h4>Leave a Review</h4>
+          <form method="POST" action="/listings/<%= listing._id %>/reviews" novalidate class="needs-validation">
+            <div class="mb-3 mt-3">
+              <label for="rating" class="form-label">Rating</label>
+              <fieldset class="starability-heart">
+                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+                  aria-label="No rating." />
+                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                <label for="first-rate1" title="Terrible">1 star</label>
+                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                <label for="first-rate2" title="Not good">2 stars</label>
+                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                <label for="first-rate3" title="Average">3 stars</label>
+                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                <label for="first-rate4" title="Very good">4 stars</label>
+                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                <label for="first-rate5" title="Amazing">5 stars</label>
+              </fieldset>
+            </div>
+
+            <div class="mb-3 mt-3">
+              <label for="comment" class="form-label">Comment</label>
+              <textarea name="review[comment]" class="form-control" id="comment" cols="30" rows="5" required></textarea>
+              <div class="invalid-feedback">Please add some comment for reviews</div>
+            </div>
+            <button class="btn btn-outline-dark">Submit</button>
+            <hr>
+          </form>
+          <% } %>
+
+            <% if(listing.reviews.length> 0) { %>
+              <div class="row">
+                <p><b>All Reviews</b></p>
+                <% for(let review of listing.reviews) { %>
+                  <div class="card col-5 ms-3 mb-3">
+                    <div class="card-body">
+                      <h5 class="card-title">@<%= review.author.username %>
+                      </h5>
+                      <p class="card-text">
+                        <%= review.comment %>
+                      </p>
+                      <p class="card-text">
+                        <%= review.rating %> Stars
+                      </p>
+                      <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
+
+                      <form method="POST" class="mb-3"
+                        action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                        <button class="btn btn-sm btn-dark">Delete</button>
+                      </form>
+                    </div>
+                  </div>
+                  <% } %>
+              </div>
+              <% } %>
+                <br>
+                <div class="container">
+                  <div class="row">
+                    <h4 class="mt-3">What this place offers</h4>
+                    <div class="col-6 mt-3">
+                      <ul style="list-style-type: none">
+                        <li><i class="fa-solid fa-kitchen-set"></i> Kitchen</li>
+                        <li><i class="fa-solid fa-fan"></i> Air conditioning</li>
+                        <li><i class="fa-regular fa-camera"></i> Security Cameras</li>
+                      </ul>
+                    </div>
+                    <div class="col-6 mt-3">
+                      <ul style="list-style-type: none">
+                        <li> <i class="fa-solid fa-car"></i> Parking</li>
+                        <li><i class="fa-solid fa-tv"></i> TV</li>
+                        <li><i class="fa-solid fa-wifi"></i> WiFi</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#offersModal">
+                        Show all amenities
+                      </button>
+<div class="modal fade" id="offersModal" tabindex="">
+  <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">What this place offers</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+
+        <h6>🌄 Scenic views</h6>
+        <ul>
+          <li>Lake view</li>
+          <li>Mountain view</li>
+          <li>Pool view</li>
+        </ul>
+
+        <h6>🛁 Bathrooms</h6>
+        <ul>
+          <li>Cleaning products</li>
+          <li>Shampoo</li>
+          <li>Hot water</li>
+        </ul>
+
+        <h6>🛏 Bedroom and laundry</h6>
+        <ul>
+          <li>Essentials</li>
+          <li>Hangers</li>
+          <li>Bed linen</li>
+        </ul>
+
+        <h6>📺 Entertainment</h6>
+        <ul>
+          <li>TV with standard cable/satellite</li>
+          <li>Sound system with Bluetooth & AUX</li>
+          <li>Pool table</li>
+        </ul>
+
+        <h6>🌿 Outdoor</h6>
+        <ul>
+          <li>Patio or balcony</li>
+          <li>Garden</li>
+          <li>Hammock</li>
+          <li>Firepit</li>
+          <li>BBQ grill</li>
+        </ul>
+
+        <h6>🍽 Kitchen and dining</h6>
+        <ul>
+          <li>Dishes and cutlery</li>
+          <li>Barbecue utensils</li>
+          <li>Dining table</li>
+          <li>Freezer</li>
+        </ul>
+
+        <h6>📍 Location features</h6>
+        <ul>
+          <li>Waterfront</li>
+          <li>Right next to a body of water</li>
+        </ul>
+
+        <h6>🏞 Lake access</h6>
+        <p>Guests can get to a lake using a path or dock</p>
+
+        <h6>🚪 Private entrance</h6>
+        <p>Separate street or building entrance</p>
+
+        <p><strong>and many more...</strong></p>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-dark" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+
+    </div>
   </div>
 </div>
-</div>
 
-<% if(currUser && listing.owner._id.equals(currUser._id)){ %> 
- <div class="btns">
-   <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark add-btn col-1 offset-3 ">Edit</a>
-
-    <form method="POST" action="/listings/<%= listing._id%>?_method=DELETE">
-      <button class="btn btn-dark offset-5">Delete </button>
-    </form>
-</div>
-<% } %>
-
- <div class="col-8 offset-3 mb-3">
-<% if(currUser) { %>
-  <hr>
- <h4>Leave a Review</h4>
- <form method="POST" action="/listings/<%= listing._id %>/reviews" novalidate class="needs-validation" >
-     <div class="mb-3 mt-3">
-        <label for="rating"  class="form-label">Rating</label>
-    <fieldset class="starability-heart">
-                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
-                    <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                    <label for="first-rate1" title="Terrible">1 star</label>
-                    <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                    <label for="first-rate2" title="Not good">2 stars</label>
-                    <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                    <label for="first-rate3" title="Average">3 stars</label>
-                    <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                    <label for="first-rate4" title="Very good">4 stars</label>
-                    <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                    <label for="first-rate5" title="Amazing">5 stars</label>
-                </fieldset>
-     </div>
-
-    <div class="mb-3 mt-3">
-      <label for="comment"  class="form-label">Comment</label>
-        <textarea name="review[comment]" 
-          class="form-control" id="comment" 
-          cols="30" rows="5" required></textarea>
-          <div class="invalid-feedback">Please add some comment for reviews</div>
-     </div>
-     <button class="btn btn-outline-dark">Submit</button>
- <hr> 
- </form>
-<% } %>
-
-<% if(listing.reviews.length > 0) { %>
-<div class="row">
-  <p><b>All Reviews</b></p>
-  <% for(let review of listing.reviews) { %>
-    <div class="card col-5 ms-3 mb-3">
-      <div class="card-body">
-        <h5 class="card-title">@<%= review.author.username %></h5>
-        <p class="card-text"><%= review.comment %></p>
-        <p class="card-text"><%= review.rating %> Stars</p> 
-        <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
-
-        <form method="POST" class="mb-3" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-          <button class="btn btn-sm btn-dark">Delete</button>
-        </form>
+                      <br /><br />
+                    </div>
+                    <hr>
+                    <br>
+                    <div class="container">
+                      <div class="row">
+                        <h4>Add-on services</h4>
+                        <p>After booking this home, a trip designer can arrange any of these add-on services.</p>
+                        <div class="col-6">
+                          <ul style="list-style-type: none">
+                            <li> <i class="fa-solid fa-jet-fighter"></i> Airport Transfer</li>
+                            <li> <i class="fa-solid fa-basket-shopping"></i> Pre-stocking</li>
+                          </ul>
+                        </div>
+                        <div class="col-6">
+                          <ul style="list-style-type: none">
+                            <li> <i class="fa-solid fa-filter"></i> Butler</li>
+                            <li><i class="fa-solid fa-pump-medical"></i> Cleaning</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
       </div>
-    </div>
-  <% } %>
-</div>
-<% } %>
 
-</div>
-    <div class="col-8 offset-3 mb-3">
+      <div class="col-8 offset-3 mb-3">
         <h3>Where you'll be</h3>
         <div id="map"></div>
-    </div>
-</div>
+      </div>
+      </div>
 
-<script src="/js/map.js"></script> 
-
+      <script src="/js/map.js"></script>

@@ -1,8 +1,19 @@
-const Listing = require("../models/listing");
+// const Listing = require("../models/listing");
+// const mbxGeocoding = require('@mconfermationapbox/mapbox-sdk/services/geocoding');
+// const mapToken = process.env.MAP_TOKEN;
+// const geoCodingClient = mbxGeocoding({ accessToken: mapToken});
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const mapToken = process.env.MAP_TOKEN;
-const geoCodingClient = mbxGeocoding({ accessToken: mapToken});
+const mapboxToken = process.env.MAP_TOKEN;
+// const geocoder = mbxGeocoding({ accessToken: mapboxToken });
+const geoCodingClient = mbxGeocoding({ accessToken: mapboxToken});
+const Listing = require("../models/listing");
 
+module.exports.reserveFormRender = (req,res) => {
+  res.render("listings/reserve.ejs");
+}
+module.exports.confermation = (req,res) => {
+    res.render("listings/confermation.ejs");
+}
 module.exports.index = async (req, res) =>{
     const allListings = await Listing.find({});
     res.render("listings/index.ejs", { allListings });
@@ -25,7 +36,6 @@ module.exports.showListing = async (req, res) => {
         req.flash("error", "Listing you requested for does not exist");
         res.redirect("/listings");
     }
-    console.log(listing);
     res.render("listings/show.ejs", { listing });
 } 
 
