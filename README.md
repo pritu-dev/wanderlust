@@ -88,7 +88,6 @@ http://localhost:8080
 
 ## 💡 Need Help?
 
-If you encounter any issues during installation, feel free to reach out. Happy Coding! 💻✨
-
-**Happy Traveling! 🌍✈️**
+If you encounter any issues during installation, feel free to connect with me on LinkedIn. I will help you! 😊
+Connect on Linedin : https://www.linkedin.com/in/priti-joshi1
 
