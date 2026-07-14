@@ -27,7 +27,7 @@ git clone https://github.com/pritu-dev/wanderlust
 Create a `.env` file in the project's root directory and add:
 
 ```env
-ATLASDB_URL=mongodb://127.0.0.1:27017/wanderlust
+ATLASDB_URL=your_mongodb_atlas_connection_string
 ```
 
 ---
