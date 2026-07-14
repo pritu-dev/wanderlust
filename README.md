@@ -84,7 +84,7 @@ http://localhost:8080
 
 🎉 Your **Wanderlust** application is now running locally!
 
-🔗 ## Live Demo: https://wanderlust-new-t6dt.onrender.com/listings
+🔗 Live Demo: https://wanderlust-new-t6dt.onrender.com/listings
 ## 💡 Need Help?
 
 If you encounter any issues during installation, feel free to connect with me on LinkedIn. I will help you! 😊
