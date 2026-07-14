@@ -17,7 +17,7 @@ Before you begin, make sure you have the following installed:
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/gawandeabhishek/Wanderlust-Major-Project.git
+git clone https://github.com/pritu-dev/wanderlust
 ```
 
 ---
